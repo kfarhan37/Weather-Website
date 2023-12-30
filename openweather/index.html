@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="search-box">
+          <input type="text" placeholder="Enter Your Location" value="" class="input-box"/>
+          <button class="fa-solid fa-magnifying-glass" id="but" ></button>
+        </div>
+      </div>
+
+      <div class="loc-not-found">
+        <h1>Sorry, Location not found!</h1>
+        <img src="/weatherpics/map-location.png" alt="Error 404" />
+      </div>
+      <div class="weather-body">
+        <div class="time">
+          <h2></h2>
+        </div>
+        <div class="time-text">
+          <p>Local Time</p>
+        </div>
+        <img src="/weatherpics/weather.svg" alt="Weather Image" class="weather-img"/>
+        <div class="d">
+          <div class="displayn">
+            <p class="displayn">Kurnool</p>
+          </div>
+          <div class="displayc">
+            <p class="displayc">IN</p>
+          </div>
+        </div>
+
+        <div class="weather-box">
+          <p class="temparature">0 <sup>°c</sup></p>
+          <p class="description">Light Rain</p>
+        </div>
+        <div class="weather-details">
+          <div class="humidity">
+            <i class="fa-solid fa-droplet" style="color: #466caf"></i>
+            <div class="text">
+              <span id="humidity">45%</span>
+              <p>Humidity</p>
+            </div>
+          </div>
+          <div class="wind-s">
+            <i class="fa-solid fa-wind" style="color: #466caf"></i>
+            <div class="text">
+              <span id="wind-s">69Km/Hr</span>
+              <p>Wind Speed</p>
+            </div>
+          </div>
+          <div class="feel">
+            <i class="fa-solid fa-temperature-three-quarters" style="color: #466caf"></i>
+            <div class="text">
+              <span id="feel">0 <sup>°c</sup></span>
+              <p>Feels Like</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <script src="script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/418aae1497.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
