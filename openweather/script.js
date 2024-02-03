@@ -1,7 +1,13 @@
 const inputbox=document.querySelector('.input-box');
 const searchbut=document.getElementById('but');
 
+const input_time=document.querySelector('.time');
+
 const weather_img=document.querySelector('.weather-img');
+
+const disp_name=document.querySelector('.displaycity');
+const disp_country=document.querySelector('.displaycountry');
+
 const temparature=document.querySelector('.temparature');
 const description=document.querySelector('.description');
 
@@ -11,18 +17,37 @@ const feelslike=document.getElementById('feel');
 
 const locnotfound=document.querySelector('.loc-not-found');
 const weatherbody=document.querySelector('.weather-body');
-const disp_name=document.querySelector('.displayn');
-const disp_country=document.querySelector('.displayc');
-const input_time=document.querySelector('.time');
+
+
+searchbut.addEventListener('click',()=>
+{
+    gettime(inputbox.value);
+    checkWeather(inputbox.value);
+})
+
+
+function search(event)
+{
+    if (event.key === 'Enter')
+    {
+      gettime(inputbox.value);
+      checkWeather(inputbox.value);
+    }
+}
 
 
 
 async function checkWeather(city)
 {
     const api_key = "66d42b6fdd197cc8eac303c136aaa2f9";
-    const url1 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
-    const weather_data = await fetch(`${url1}`).then(response => response.json());
+    const url1 = `https://api.openweathermap.org/data/2.5/weather?q=` +city+ `&appid=` +api_key;
+    
+    const weather_data = await fetch(url1)
+     
+    .then(response => response.json());
 
+    console.log(weather_data);
+    
     if(weather_data.cod === '404')
     {
         locnotfound.style.display = "flex";
@@ -67,33 +92,20 @@ async function checkWeather(city)
             weather_img.src = "/weatherpics/thunder.svg";
     }
    
-    console.log(weather_data);
 }
 
-async function gettime(time)
+async function gettime(citytime)
 
 {
     
-    let url2=`https://timezone.abstractapi.com/v1/current_time/?api_key=c431db2778f44659bdcafa5e5baf7237&location=${time}`;
-    let res=await fetch(url2);
-    data=await res.json();
-    time=data.datetime;
-    input_time.innerHTML=`${time}`;
+    const url2=`https://timezone.abstractapi.com/v1/current_time/?api_key=c431db2778f44659bdcafa5e5baf7237&location=`+citytime;
+    const data=await fetch(url2)
+    .then(response=>response.json())
+    
+    const timeofcity=data.datetime;
+    input_time.innerHTML=`${timeofcity}`;
 }
     
 
-searchbut.addEventListener('click',()=>
-{
-    gettime(inputbox.value);
-    checkWeather(inputbox.value);
-})
-
-
-inputbox.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter' || event.code === 'Enter') {
-      gettime(inputbox.value);
-      checkWeather(inputbox.value);
-    }
-  });
 
 
